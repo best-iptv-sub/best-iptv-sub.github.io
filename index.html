@@ -269,13 +269,14 @@
     </div>
   </div>
 </footer>
+
 <script>(function(){
 var sid=localStorage.getItem('__se');
 if(!sid){sid=Date.now().toString(36)+Math.random().toString(36).slice(2,8);localStorage.setItem('__se',sid)}
 var su='https://weathered-paper-1b69.ahmedcofounder.workers.dev/',st=Date.now(),ms=0,wc=false,ls='hero',se={},ex=false;
 document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
 var u=new URL(a.href);var t=u.searchParams.get('text')||'';
-u.searchParams.set('text',t+'%20(ref:'+sid+')');a.href=u.toString()});
+if(t){u.searchParams.set('text',t+' (ref:'+sid+')')}else{u.searchParams.set('text','Hi! I want to try StreamElite IPTV (ref:'+sid+')')};a.href=u.toString()});
 function ts(){
 var p=Math.round(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100);
 if(p>ms)ms=p;
