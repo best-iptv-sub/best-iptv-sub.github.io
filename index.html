@@ -26,228 +26,247 @@
     body { background-color: #09090b; }
     .accent { color: #ef233c; }
     .gradient-text {
-      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .section-label {
-      display: inline-block; background: rgba(239,35,60,0.1);
-      border: 1px solid rgba(239,35,60,0.25); color: #ef233c;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 6px 16px; border-radius: 100px;
+    .glow {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,35,60,0.15) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .cat-grid { display: grid; gap: 8px; }
-    .cat-link {
-      display: block; padding: 10px 16px; border-radius: 10px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 500;
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(239,35,60,0.08); border: 1px solid rgba(239,35,60,0.2);
+      color: #ef233c; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 24px 20px; text-align: center;
+    }
+    .card-cat {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px; padding: 28px 24px;
+      transition: all 0.25s ease;
+    }
+    .card-cat:hover { background: rgba(255,255,255,0.04); border-color: rgba(239,35,60,0.2); }
+    .card-cat h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .card-cat a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 12px;
+      color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500;
       text-decoration: none; transition: all 0.2s;
     }
-    .cat-link:hover { background: rgba(239,35,60,0.1); border-color: rgba(239,35,60,0.35); color: #fff; }
-    .cat-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
-    @media (min-width: 768px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 1024px) { .cat-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .card-cat a:hover { background: rgba(239,35,60,0.08); color: #fff; }
+    .card-cat a .ico { width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; background: rgba(255,255,255,0.04); }
+    .brand-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 500; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .brand-link:hover { background: rgba(239,35,60,0.08); border-color: rgba(239,35,60,0.2); color: #fff; }
+    .footer-link { color: rgba(255,255,255,0.25); font-size: 12px; text-decoration: none; transition: color 0.15s; }
+    .footer-link:hover { color: rgba(255,255,255,0.6); }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .anim-in { animation: fadeInUp 0.6s ease forwards; }
   </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VL60C389D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5VL60C389D');
+</script>
 </head>
 <body>
 
-<nav class="border-b border-white/5" style="background:#09090b;">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-    <span class="text-white font-extrabold text-lg tracking-tight">Stream<span class="accent">Elite</span></span>
-    <div class="flex items-center gap-5 text-sm">
-      <a href="/iptv-channels-list/" class="text-white/60 hover:text-white transition">Channels</a>
-      <a href="/iptv-setup-guide-2026/" class="text-white/60 hover:text-white transition">Guides</a>
-      <a href="https://wa.me/21623179016" class="text-white/60 hover:text-white transition" target="_blank" rel="noopener">Contact</a>
+<nav style="background:#09090b;" class="border-b border-white/[0.04] sticky top-0 z-50 backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="/" class="text-white font-extrabold text-xl tracking-tight no-underline">Stream<span class="accent">Elite</span></a>
+    <div class="flex items-center gap-6 text-sm">
+      <a href="/iptv-channels-list/" class="text-white/50 hover:text-white transition no-underline">Channels</a>
+      <a href="/iptv-setup-guide-2026/" class="text-white/50 hover:text-white transition no-underline">Guides</a>
+      <a href="/iptv-packages/" class="text-white/50 hover:text-white transition no-underline">Pricing</a>
+      <a href="https://wa.me/21623179016" target="_blank" rel="noopener" class="bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-2 rounded-lg transition no-underline" style="background:#ef233c;">Free Trial</a>
     </div>
   </div>
 </nav>
 
-<section class="max-w-7xl mx-auto px-4 pt-20 pb-14 text-center">
-  <span class="section-label">150,000+ CHANNELS</span>
-  <h1 class="text-4xl md:text-6xl font-extrabold gradient-text mt-4 leading-tight">StreamElite <span class="accent" style="-webkit-text-fill-color:#ef233c;">IPTV</span></h1>
-  <p class="text-white/50 text-lg mt-4 max-w-2xl mx-auto">Premium IPTV service with 150,000+ live channels, 40,000+ movies &amp; series on demand, 4K sports, and instant activation on every device.</p>
-  <div class="mt-8 flex flex-wrap justify-center gap-4">
-    <a href="https://wa.me/21623179016?text=Hi!%20I%27d%20like%20to%20start%20my%20free%2024-hour%20IPTV%20trial%20%F0%9F%99%8F" target="_blank" rel="noopener" class="btn-primary" style="background:#ef233c;color:white;padding:14px 32px;border-radius:8px;font-weight:700;display:inline-block;text-decoration:none;">Free Trial on WhatsApp</a>
-    <a href="/iptv-channels-list/" class="btn-outline" style="border:1.5px solid rgba(255,255,255,0.15);color:white;padding:13px 32px;border-radius:8px;font-weight:600;display:inline-block;text-decoration:none;background:rgba(255,255,255,0.04);">Browse Channels</a>
+<section class="relative overflow-hidden pt-24 pb-20">
+  <div class="glow" style="top:-100px;left:50%;transform:translateX(-50%);"></div>
+  <div class="max-w-7xl mx-auto px-5 text-center relative z-10">
+    <div class="pill mx-auto mb-6"><span>Now with 4K Sports &bull; 150,000+ Channels</span></div>
+    <h1 class="text-5xl md:text-7xl font-extrabold gradient-text leading-[1.1] tracking-tight">Premium IPTV<br><span class="accent" style="-webkit-text-fill-color:#ef233c;">For Everyone</span></h1>
+    <p class="text-white/40 text-lg md:text-xl mt-5 max-w-2xl mx-auto leading-relaxed">StreamElite delivers 150,000+ live channels, 40,000+ movies &amp; series, 4K sports, and instant activation on Firestick, Smart TV, Android &amp; iOS.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="https://wa.me/21623179016?text=Hi!%20I%27d%20like%20to%20start%20my%20free%2024-hour%20IPTV%20trial%20%F0%9F%99%8F" target="_blank" rel="noopener" style="background:#ef233c;color:white;padding:15px 36px;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px;">Start Free Trial</a>
+      <a href="/iptv-channels-list/" style="border:1.5px solid rgba(255,255,255,0.1);color:white;padding:14px 36px;border-radius:10px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px;background:rgba(255,255,255,0.03);">View Channel List</a>
+    </div>
   </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-4 pb-20">
+<section class="max-w-7xl mx-auto px-5 pb-16">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="stat-box"><div class="text-2xl md:text-3xl font-extrabold gradient-text">150K+</div><div class="text-white/30 text-xs mt-1 font-medium uppercase tracking-wider">Live Channels</div></div>
+    <div class="stat-box"><div class="text-2xl md:text-3xl font-extrabold gradient-text">40K+</div><div class="text-white/30 text-xs mt-1 font-medium uppercase tracking-wider">Movies &amp; VOD</div></div>
+    <div class="stat-box"><div class="text-2xl md:text-3xl font-extrabold gradient-text">99.9%</div><div class="text-white/30 text-xs mt-1 font-medium uppercase tracking-wider">Uptime</div></div>
+    <div class="stat-box"><div class="text-2xl md:text-3xl font-extrabold gradient-text">24h</div><div class="text-white/30 text-xs mt-1 font-medium uppercase tracking-wider">Free Trial</div></div>
+  </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-5 pb-24">
   <div class="text-center mb-12">
-    <span class="section-label">EXPLORE</span>
-    <h2 class="gradient-text text-3xl font-extrabold mt-4">Everything IPTV</h2>
-    <p class="text-white/40 mt-2">Find plans, guides, troubleshooting, and more</p>
+    <div class="pill mx-auto mb-4">EXPLORE</div>
+    <h2 class="text-3xl md:text-4xl font-extrabold gradient-text">Everything IPTV</h2>
+    <p class="text-white/30 mt-2">Find the right plan, setup guide, or troubleshooting help</p>
   </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Channels &amp; Lineup</div>
-      <div class="cat-grid">
-        <a href="/iptv-channels-list/" class="cat-link">Full Channels List</a>
-        <a href="/4k-iptv-usa/" class="cat-link">4K IPTV USA</a>
-        <a href="/best-iptv-for-live-sports/" class="cat-link">Live Sports</a>
-        <a href="/iptv-with-vod/" class="cat-link">Movies &amp; VOD</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Channels &amp; Lineup</h3>
+      <a href="/iptv-channels-list/"><span class="ico">📺</span> Full Channels List</a>
+      <a href="/4k-iptv-usa/"><span class="ico">📡</span> 4K IPTV USA</a>
+      <a href="/best-iptv-for-live-sports/"><span class="ico">⚽</span> Live Sports Channels</a>
+      <a href="/iptv-with-vod/"><span class="ico">🎬</span> Movies &amp; VOD</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Buyer Guides</div>
-      <div class="cat-grid">
-        <a href="/best-iptv-service-2026/" class="cat-link">Best IPTV Service 2026</a>
-        <a href="/best-iptv-subscription/" class="cat-link">Best Subscription</a>
-        <a href="/cheapest-iptv-subscription/" class="cat-link">Cheapest Plan</a>
-        <a href="/iptv-subscription-12-months/" class="cat-link">12 Month Plan</a>
-        <a href="/iptv-subscription-price/" class="cat-link">Price Comparison</a>
-        <a href="/iptv-packages/" class="cat-link">All Packages</a>
-        <a href="/top-10-best-iptv/" class="cat-link">Top 10 Services</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Buyer Guides</h3>
+      <a href="/best-iptv-service-2026/"><span class="ico">🏆</span> Best IPTV 2026</a>
+      <a href="/best-iptv-subscription/"><span class="ico">⭐</span> Best Subscription</a>
+      <a href="/cheapest-iptv-subscription/"><span class="ico">💰</span> Cheapest Plan</a>
+      <a href="/iptv-subscription-12-months/"><span class="ico">📅</span> 12 Month Plan</a>
+      <a href="/iptv-subscription-price/"><span class="ico">💵</span> Price Comparison</a>
+      <a href="/iptv-packages/"><span class="ico">📦</span> All Packages</a>
+      <a href="/top-10-best-iptv/"><span class="ico">🔟</span> Top 10 Services</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Premium Features</div>
-      <div class="cat-grid">
-        <a href="/best-iptv-with-24h-free-trial-automatic/" class="cat-link">Free Trial</a>
-        <a href="/best-stable-iptv-for-live-sports-60fps/" class="cat-link">60fps Sports</a>
-        <a href="/buy-iptv-with-crypto-anonymous/" class="cat-link">Pay with Crypto</a>
-        <a href="/instant-iptv-service/" class="cat-link">Instant Activation</a>
-        <a href="/best-private-premium-iptv-server-2026/" class="cat-link">Premium Server</a>
-        <a href="/iptv-provider-with-catch-up-and-epg-uk/" class="cat-link">Catch-up &amp; EPG</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Premium Features</h3>
+      <a href="/best-iptv-with-24h-free-trial-automatic/"><span class="ico">🎁</span> Free Trial</a>
+      <a href="/best-stable-iptv-for-live-sports-60fps/"><span class="ico">🚀</span> 60fps Sports</a>
+      <a href="/buy-iptv-with-crypto-anonymous/"><span class="ico">🔒</span> Crypto Payment</a>
+      <a href="/instant-iptv-service/"><span class="ico">⚡</span> Instant Activation</a>
+      <a href="/best-private-premium-iptv-server-2026/"><span class="ico">🛡️</span> Premium Server</a>
+      <a href="/iptv-provider-with-catch-up-and-epg-uk/"><span class="ico">📋</span> Catch-up &amp; EPG</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Setup Guides</div>
-      <div class="cat-grid">
-        <a href="/iptv-setup-guide-2026/" class="cat-link">Complete Setup Guide</a>
-        <a href="/how-to-setup-xtream-codes-api-on-xciptv-player-android-tv/" class="cat-link">Xtream + XCIPTV</a>
-        <a href="/how-to-activate-xtream-codes-api-on-xciptv-player/" class="cat-link">Activate Xtream</a>
-        <a href="/how-to-watch-3pm-premier-league-games-on-tivimate/" class="cat-link">3pm Premier League</a>
-        <a href="/how-to-map-external-epg-url-to-raw-m3u-playlist/" class="cat-link">Map EPG to M3U</a>
-        <a href="/airtel-iptv-m3u-playlist-github-setup-guide/" class="cat-link">Airtel IPTV M3U</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Setup Guides</h3>
+      <a href="/iptv-setup-guide-2026/"><span class="ico">📖</span> Complete Guide</a>
+      <a href="/how-to-setup-xtream-codes-api-on-xciptv-player-android-tv/"><span class="ico">🔧</span> Xtream + XCIPTV</a>
+      <a href="/how-to-activate-xtream-codes-api-on-xciptv-player/"><span class="ico">✅</span> Activate Xtream</a>
+      <a href="/how-to-watch-3pm-premier-league-games-on-tivimate/"><span class="ico">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 3pm Premier League</a>
+      <a href="/how-to-map-external-epg-url-to-raw-m3u-playlist/"><span class="ico">🗺️</span> Map EPG to M3U</a>
+      <a href="/airtel-iptv-m3u-playlist-github-setup-guide/"><span class="ico">📡</span> Airtel M3U Guide</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Device Guides</div>
-      <div class="cat-grid">
-        <a href="/best-iptv-service-for-firestick-4k-max-2026/" class="cat-link">Firestick 4K Max</a>
-        <a href="/best-premium-iptv-playlist-for-formuler-z11-pro-max/" class="cat-link">Formuler Z11 Pro</a>
-        <a href="/where-to-buy-iptv-playlist-for-sky-sports-hd/" class="cat-link">Sky Sports HD</a>
-        <a href="/best-vpn-protocol-for-firetv-stick-4k-live-streaming-lag/" class="cat-link">VPN for Firestick</a>
-        <a href="/best-audio-passthrough-settings-for-tivimate-surround-sound/" class="cat-link">TiviMate Audio</a>
-        <a href="/how-to-clear-cache-on-firestick-without-losing-tivimate-data/" class="cat-link">Clear Cache</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Device Guides</h3>
+      <a href="/best-iptv-service-for-firestick-4k-max-2026/"><span class="ico">🔥</span> Firestick 4K Max</a>
+      <a href="/best-premium-iptv-playlist-for-formuler-z11-pro-max/"><span class="ico">📺</span> Formuler Z11 Pro</a>
+      <a href="/where-to-buy-iptv-playlist-for-sky-sports-hd/"><span class="ico">⭐</span> Sky Sports HD</a>
+      <a href="/best-vpn-protocol-for-firetv-stick-4k-live-streaming-lag/"><span class="ico">🛡️</span> VPN for Firestick</a>
+      <a href="/best-audio-passthrough-settings-for-tivimate-surround-sound/"><span class="ico">🔊</span> Audio Passthrough</a>
+      <a href="/how-to-clear-cache-on-firestick-without-losing-tivimate-data/"><span class="ico">🧹</span> Clear Cache</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Troubleshooting</div>
-      <div class="cat-grid">
-        <a href="/iptv-smarters-pro-error-code-403-authorization-failed/" class="cat-link">IPTV Smarters 403</a>
-        <a href="/tivimate-5-3-2-error-playlist-failed-to-load/" class="cat-link">TiviMate Playlist Error</a>
-        <a href="/tivimate-app-crashing-when-removing-epg-prefixes-fix/" class="cat-link">TiviMate Crash Fix</a>
-        <a href="/how-to-fix-tivimate-epg-missing-failed-to-get-data/" class="cat-link">EPG Missing Fix</a>
-        <a href="/how-to-stop-isp-throttling-iptv-on-firestick-uk/" class="cat-link">ISP Throttling</a>
-        <a href="/does-opening-a-public-m3u-link-expose-your-ip-address/" class="cat-link">M3U IP Exposure</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Troubleshooting</h3>
+      <a href="/iptv-smarters-pro-error-code-403-authorization-failed/"><span class="ico">⚠️</span> IPTV Smarters 403</a>
+      <a href="/tivimate-5-3-2-error-playlist-failed-to-load/"><span class="ico">❌</span> TiviMate Error</a>
+      <a href="/tivimate-app-crashing-when-removing-epg-prefixes-fix/"><span class="ico">💥</span> TiviMate Crash Fix</a>
+      <a href="/how-to-fix-tivimate-epg-missing-failed-to-get-data/"><span class="ico">📅</span> EPG Missing Fix</a>
+      <a href="/how-to-stop-isp-throttling-iptv-on-firestick-uk/"><span class="ico">🐌</span> ISP Throttling</a>
+      <a href="/does-opening-a-public-m3u-link-expose-your-ip-address/"><span class="ico">👁️</span> M3U Privacy</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">Advanced</div>
-      <div class="cat-grid">
-        <a href="/how-to-merge-multiple-m3u-playlists-into-one-free/" class="cat-link">Merge M3U Playlists</a>
-        <a href="/how-to-pay-for-iptv-anonymously-with-crypto-reddit/" class="cat-link">Anonymous Payment</a>
-        <a href="/best-free-alternatives-to-m3u4u-for-iptv-editor/" class="cat-link">M3U4U Alternatives</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>Advanced</h3>
+      <a href="/how-to-merge-multiple-m3u-playlists-into-one-free/"><span class="ico">🔗</span> Merge M3U</a>
+      <a href="/how-to-pay-for-iptv-anonymously-with-crypto-reddit/"><span class="ico">🕵️</span> Anonymous Payment</a>
+      <a href="/best-free-alternatives-to-m3u4u-for-iptv-editor/"><span class="ico">🔄</span> M3U4U Alternatives</a>
     </div>
 
-    <div class="card" style="background:rgba(24,24,27,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
-      <div class="cat-title">International</div>
-      <div class="cat-grid">
-        <a href="/abonnement-iptv-france-2026/" class="cat-link">France</a>
-        <a href="/bestes-iptv-abo-deutschland/" class="cat-link">Deutschland</a>
-        <a href="/afdal-eshtirak-iptv-2026/" class="cat-link">عربي</a>
-        <a href="/best-iptv-subscription-usa/" class="cat-link">USA</a>
-      </div>
+    <div class="card-cat anim-in">
+      <h3>International</h3>
+      <a href="/abonnement-iptv-france-2026/"><span class="ico">🇫🇷</span> France</a>
+      <a href="/bestes-iptv-abo-deutschland/"><span class="ico">🇩🇪</span> Deutschland</a>
+      <a href="/afdal-eshtirak-iptv-2026/"><span class="ico">🇸🇦</span> عربي</a>
+      <a href="/best-iptv-subscription-usa/"><span class="ico">🇺🇸</span> USA</a>
+      <a href="/best-iptv-subscription/"><span class="ico">🌍</span> Global</a>
+    </div>
+
+    <div class="card-cat anim-in">
+      <h3>Brands &amp; Comparisons</h3>
+      <a href="/zorba-iptv/"><span class="ico">🏷️</span> Zorba IPTV</a>
+      <a href="/zenora-iptv/"><span class="ico">🏷️</span> Zenora IPTV</a>
+      <a href="/flexstream-iptv/"><span class="ico">🏷️</span> FlexStream IPTV</a>
+      <a href="/iptv-org/"><span class="ico">🏷️</span> IPTV-Org</a>
+      <a href="/streaming-iptv/"><span class="ico">🏷️</span> Streaming IPTV</a>
+      <a href="/iptv-provider/"><span class="ico">🏷️</span> IPTV Provider</a>
+      <a href="/best-iptv-service-2026-reddit/"><span class="ico">💬</span> Reddit Reviews</a>
     </div>
 
   </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-4 pb-20">
-  <div class="text-center mb-10">
-    <span class="section-label">POPULAR PAGES</span>
-    <h2 class="gradient-text text-3xl font-extrabold mt-4">Brands &amp; Comparisons</h2>
-  </div>
-  <div class="flex flex-wrap justify-center gap-3">
-    <a href="/zorba-iptv/" class="cat-link" style="font-size:13px;">Zorba IPTV</a>
-    <a href="/zenora-iptv/" class="cat-link" style="font-size:13px;">Zenora IPTV</a>
-    <a href="/flexstream-iptv/" class="cat-link" style="font-size:13px;">FlexStream IPTV</a>
-    <a href="/iptv-org/" class="cat-link" style="font-size:13px;">IPTV-Org</a>
-    <a href="/streaming-iptv/" class="cat-link" style="font-size:13px;">Streaming IPTV</a>
-    <a href="/iptv-provider/" class="cat-link" style="font-size:13px;">IPTV Provider</a>
-    <a href="/best-iptv-service-2026-reddit/" class="cat-link" style="font-size:13px;">Reddit Reviews</a>
+<section style="background:linear-gradient(180deg,rgba(239,35,60,0.04) 0%,transparent 100%);" class="border-t border-white/[0.04] py-20 px-5">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="pill mx-auto mb-5">GET STARTED</div>
+    <h2 class="text-3xl md:text-4xl font-extrabold gradient-text mb-4">Ready for Premium IPTV?</h2>
+    <p class="text-white/40 max-w-xl mx-auto mb-8">Try StreamElite free for 24 hours. No credit card required. Instant activation on any device.</p>
+    <a href="https://wa.me/21623179016?text=Hi!%20I%27d%20like%20to%20start%20my%20free%2024-hour%20IPTV%20trial%20%F0%9F%99%8F" target="_blank" rel="noopener" style="background:#ef233c;color:white;padding:16px 40px;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:16px;">Claim 24h Free Trial &rarr;</a>
   </div>
 </section>
 
-<footer class="border-t border-white/5 py-12 px-4">
+<footer class="border-t border-white/[0.04] py-16 px-5">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-10">
-      <a href="https://wa.me/21623179016?text=Hi!%20I%27d%20like%20to%20start%20my%20free%2024-hour%20IPTV%20trial%20%F0%9F%99%8F" target="_blank" rel="noopener" class="btn-primary" style="background:#ef233c;color:white;padding:14px 32px;border-radius:8px;font-weight:700;display:inline-block;text-decoration:none;">Get 24h Free Trial on WhatsApp</a>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <h4 class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Channels</h4>
+        <div class="flex flex-col gap-2">
+          <a href="/iptv-channels-list/" class="footer-link">Channels List</a>
+          <a href="/4k-iptv-usa/" class="footer-link">4K IPTV USA</a>
+          <a href="/best-iptv-for-live-sports/" class="footer-link">Live Sports</a>
+          <a href="/iptv-with-vod/" class="footer-link">Movies &amp; VOD</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Buying</h4>
+        <div class="flex flex-col gap-2">
+          <a href="/best-iptv-subscription/" class="footer-link">Best Plan</a>
+          <a href="/cheapest-iptv-subscription/" class="footer-link">Cheapest Plan</a>
+          <a href="/iptv-packages/" class="footer-link">All Packages</a>
+          <a href="/top-10-best-iptv/" class="footer-link">Top 10 IPTV</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Guides</h4>
+        <div class="flex flex-col gap-2">
+          <a href="/iptv-setup-guide-2026/" class="footer-link">Setup Guide</a>
+          <a href="/iptv-smarters-pro-error-code-403-authorization-failed/" class="footer-link">Smarters Fix</a>
+          <a href="/tivimate-5-3-2-error-playlist-failed-to-load/" class="footer-link">TiviMate Fix</a>
+          <a href="/best-vpn-protocol-for-firetv-stick-4k-live-streaming-lag/" class="footer-link">VPN Guide</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Support</h4>
+        <div class="flex flex-col gap-2">
+          <a href="https://wa.me/21623179016" target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
+          <a href="/instant-iptv-service/" class="footer-link">Instant Activation</a>
+          <a href="/best-iptv-with-24h-free-trial-automatic/" class="footer-link">Free Trial</a>
+          <a href="/buy-iptv-with-crypto-anonymous/" class="footer-link">Crypto Payment</a>
+        </div>
+      </div>
     </div>
-    <p class="text-white/20 text-xs text-center mb-6">StreamElite IPTV - 150,000+ Channels | 40,000+ VOD | 4K Sports | 24/7 Support</p>
-    <div class="text-white/20 text-xs text-center leading-loose max-w-5xl mx-auto">
-      <a href="/4k-iptv-usa/" class="text-white/30 hover:text-white/60 transition mx-1">4K IPTV USA</a>
-      <a href="/abonnement-iptv-france-2026/" class="text-white/30 hover:text-white/60 transition mx-1">France</a>
-      <a href="/afdal-eshtirak-iptv-2026/" class="text-white/30 hover:text-white/60 transition mx-1">عربي</a>
-      <a href="/airtel-iptv-m3u-playlist-github-setup-guide/" class="text-white/30 hover:text-white/60 transition mx-1">Airtel M3U</a>
-      <a href="/best-audio-passthrough-settings-for-tivimate-surround-sound/" class="text-white/30 hover:text-white/60 transition mx-1">Audio Passthrough</a>
-      <a href="/best-free-alternatives-to-m3u4u-for-iptv-editor/" class="text-white/30 hover:text-white/60 transition mx-1">M3U4U Alternatives</a>
-      <a href="/best-iptv-for-live-sports/" class="text-white/30 hover:text-white/60 transition mx-1">Sports IPTV</a>
-      <a href="/best-iptv-service-2026/" class="text-white/30 hover:text-white/60 transition mx-1">Best IPTV 2026</a>
-      <a href="/best-iptv-service-2026-reddit/" class="text-white/30 hover:text-white/60 transition mx-1">Reddit</a>
-      <a href="/best-iptv-service-for-firestick-4k-max-2026/" class="text-white/30 hover:text-white/60 transition mx-1">Firestick 4K</a>
-      <a href="/best-iptv-subscription/" class="text-white/30 hover:text-white/60 transition mx-1">Best Subscription</a>
-      <a href="/best-iptv-subscription-usa/" class="text-white/30 hover:text-white/60 transition mx-1">USA Subscription</a>
-      <a href="/best-iptv-with-24h-free-trial-automatic/" class="text-white/30 hover:text-white/60 transition mx-1">Free Trial</a>
-      <a href="/best-premium-iptv-playlist-for-formuler-z11-pro-max/" class="text-white/30 hover:text-white/60 transition mx-1">Formuler Z11</a>
-      <a href="/best-private-premium-iptv-server-2026/" class="text-white/30 hover:text-white/60 transition mx-1">Premium Server</a>
-      <a href="/best-stable-iptv-for-live-sports-60fps/" class="text-white/30 hover:text-white/60 transition mx-1">60fps Sports</a>
-      <a href="/best-vpn-protocol-for-firetv-stick-4k-live-streaming-lag/" class="text-white/30 hover:text-white/60 transition mx-1">VPN Guide</a>
-      <a href="/bestes-iptv-abo-deutschland/" class="text-white/30 hover:text-white/60 transition mx-1">Deutschland</a>
-      <a href="/buy-iptv-with-crypto-anonymous/" class="text-white/30 hover:text-white/60 transition mx-1">Crypto Payment</a>
-      <a href="/cheapest-iptv-subscription/" class="text-white/30 hover:text-white/60 transition mx-1">Cheapest Plan</a>
-      <a href="/does-opening-a-public-m3u-link-expose-your-ip-address/" class="text-white/30 hover:text-white/60 transition mx-1">M3U Privacy</a>
-      <a href="/flexstream-iptv/" class="text-white/30 hover:text-white/60 transition mx-1">FlexStream</a>
-      <a href="/how-to-activate-xtream-codes-api-on-xciptv-player/" class="text-white/30 hover:text-white/60 transition mx-1">Activate Xtream</a>
-      <a href="/how-to-clear-cache-on-firestick-without-losing-tivimate-data/" class="text-white/30 hover:text-white/60 transition mx-1">Clear Cache</a>
-      <a href="/how-to-fix-tivimate-epg-missing-failed-to-get-data/" class="text-white/30 hover:text-white/60 transition mx-1">Fix EPG</a>
-      <a href="/how-to-map-external-epg-url-to-raw-m3u-playlist/" class="text-white/30 hover:text-white/60 transition mx-1">Map EPG</a>
-      <a href="/how-to-merge-multiple-m3u-playlists-into-one-free/" class="text-white/30 hover:text-white/60 transition mx-1">Merge M3U</a>
-      <a href="/how-to-pay-for-iptv-anonymously-with-crypto-reddit/" class="text-white/30 hover:text-white/60 transition mx-1">Anonymous Pay</a>
-      <a href="/how-to-setup-xtream-codes-api-on-xciptv-player-android-tv/" class="text-white/30 hover:text-white/60 transition mx-1">Xtream Setup</a>
-      <a href="/how-to-stop-isp-throttling-iptv-on-firestick-uk/" class="text-white/30 hover:text-white/60 transition mx-1">Stop Throttling</a>
-      <a href="/how-to-watch-3pm-premier-league-games-on-tivimate/" class="text-white/30 hover:text-white/60 transition mx-1">3pm PL Games</a>
-      <a href="/instant-iptv-service/" class="text-white/30 hover:text-white/60 transition mx-1">Instant IPTV</a>
-      <a href="/iptv-channels-list/" class="text-white/30 hover:text-white/60 transition mx-1">Channels List</a>
-      <a href="/iptv-org/" class="text-white/30 hover:text-white/60 transition mx-1">IPTV Org</a>
-      <a href="/iptv-packages/" class="text-white/30 hover:text-white/60 transition mx-1">Packages</a>
-      <a href="/iptv-provider/" class="text-white/30 hover:text-white/60 transition mx-1">Provider</a>
-      <a href="/iptv-provider-with-catch-up-and-epg-uk/" class="text-white/30 hover:text-white/60 transition mx-1">Catch-up IPTV</a>
-      <a href="/iptv-setup-guide-2026/" class="text-white/30 hover:text-white/60 transition mx-1">Setup Guide</a>
-      <a href="/iptv-smarters-pro-error-code-403-authorization-failed/" class="text-white/30 hover:text-white/60 transition mx-1">Smarters 403</a>
-      <a href="/iptv-subscription-12-months/" class="text-white/30 hover:text-white/60 transition mx-1">12 Months</a>
-      <a href="/iptv-subscription-price/" class="text-white/30 hover:text-white/60 transition mx-1">Prices</a>
-      <a href="/iptv-subscription-usa/" class="text-white/30 hover:text-white/60 transition mx-1">USA Plan</a>
-      <a href="/iptv-with-vod/" class="text-white/30 hover:text-white/60 transition mx-1">VOD</a>
-      <a href="/streaming-iptv/" class="text-white/30 hover:text-white/60 transition mx-1">Streaming IPTV</a>
-      <a href="/tivimate-5-3-2-error-playlist-failed-to-load/" class="text-white/30 hover:text-white/60 transition mx-1">TiviMate Error</a>
-      <a href="/tivimate-app-crashing-when-removing-epg-prefixes-fix/" class="text-white/30 hover:text-white/60 transition mx-1">TiviMate Crash</a>
-      <a href="/top-10-best-iptv/" class="text-white/30 hover:text-white/60 transition mx-1">Top 10</a>
-      <a href="/where-to-buy-iptv-playlist-for-sky-sports-hd/" class="text-white/30 hover:text-white/60 transition mx-1">Sky Sports</a>
-      <a href="/zenora-iptv/" class="text-white/30 hover:text-white/60 transition mx-1">Zenora</a>
-      <a href="/zorba-iptv/" class="text-white/30 hover:text-white/60 transition mx-1">Zorba IPTV</a>
+    <div class="border-t border-white/[0.04] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-white/15 text-xs">StreamElite IPTV &mdash; 150,000+ Channels | 40,000+ VOD | 4K Sports | 24/7 Support</p>
+      <p class="text-white/15 text-xs">&copy; 2026 StreamElite. All rights reserved.</p>
     </div>
-    <p class="text-white/20 text-xs text-center mt-8"> 2026 StreamElite. All rights reserved. | <a href="https://wa.me/21623179016" class="text-red-600 hover:underline">Contact via WhatsApp</a></p>
   </div>
 </footer>
 <script>(function(){
